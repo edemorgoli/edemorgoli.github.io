@@ -1,0 +1,7 @@
+<div class="case-card phase-border-{{ include.phase }}">
+  <span class="phase-label phase-{{ include.phase }}">{{ include.phase | upcase }}</span>
+  <h3><a href="/case-studies/{{ include.url }}/">{{ include.title }}</a></h3>
+  <p class="case-card-client">{{ include.client }}</p>
+  <p class="case-card-situation">{{ include.situation }}</p>
+  <p class="case-card-outcome"><strong>{{ include.outcome }}</strong></p>
+</div>

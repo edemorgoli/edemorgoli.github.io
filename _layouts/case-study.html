@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<article class="page case-study-page pattern-{{ page.phase }}">
+  <div class="case-header">
+    <span class="phase-label phase-{{ page.phase }}">{{ page.phase | upcase }}</span>
+    <h1>{{ page.title }}</h1>
+    <p class="case-meta">{{ page.client }} &nbsp;|&nbsp; {{ page.context }}</p>
+  </div>
+  {{ content }}
+  {% include cta.html message="If this resembles your situation, I'm available for a confidential conversation." %}
+</article>

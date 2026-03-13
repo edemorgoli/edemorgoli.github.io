@@ -1,0 +1,28 @@
+title: "Eric de Morgoli — Strategic Advisory"
+description: "Restoring control, creating coherence, engineering compounding. Board and PE advisory for complex organizations."
+url: "https://edemorgoli.github.io"
+baseurl: ""
+
+author:
+  name: "Eric de Morgoli"
+  email: "eric.de.morgoli@proton.me"
+  linkedin: "https://www.linkedin.com/in/ericdemorgoli/"
+
+company: "E2M Consulting Services"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+permalink: pretty
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "page"
