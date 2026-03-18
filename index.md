@@ -11,6 +11,7 @@ description: "Eric de Morgoli — Strategic advisory for boards and PE-backed co
 <p class="text-secondary">This site documents how that gets fixed — through structural diagnosis, decision architecture, and disciplined execution.</p>
 </div>
 
+
 ## Who This Is For
 
 <ul class="audience-list">
