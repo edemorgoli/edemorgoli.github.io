@@ -4,7 +4,7 @@ title: null
 description: "Eric de Morgoli — Strategic advisory for boards and PE-backed companies. Restoring control, creating coherence, engineering compounding."
 ---
 
-<article class="page">
+
 
 <div class="hero">
 <h1>Complex organizations lose performance not because strategy or talent fails — but because the system stops converting good judgment into consistent outcomes.</h1>
@@ -53,4 +53,4 @@ The case studies are the evidence. The patterns are the interpretive layer. Ever
 
 {% include cta.html message="If your organization is facing one of these situations, I'm available for a confidential conversation." %}
 
-</article>
+
