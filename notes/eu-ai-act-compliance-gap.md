@@ -7,7 +7,9 @@ permalink: /notes/eu-ai-act-compliance-gap/
 date: 2026-04-13
 ---
 
-The EU AI Act becomes broadly enforceable on 2 August 2026. Fines for non-compliant high-risk AI systems can reach €35 million or 7% of global annual turnover. These figures have generated significant board attention, legal briefings, and compliance programmes across Europe and internationally.
+The EU AI Act becomes broadly enforceable on 2 August 2026. Fines for non-compliant high-risk AI systems can reach €35 million or 7% of global annual turnover.
+
+These figures have generated significant board attention, legal briefings, and compliance programmes across Europe and internationally.
 
 Most of those programmes are addressing the right problem in the wrong order.
 
@@ -31,7 +33,9 @@ This is not a desk exercise. It requires structured stakeholder interviews, vend
 
 **"We're using a vendor's AI system" is not a compliance defence**
 
-The Act draws a clear distinction between providers (those who develop or place AI systems on the market) and deployers (those who use AI systems in a professional context). Deployers of high-risk AI systems carry their own obligations under the Act — distinct from those of the provider, and not transferred by contract.
+The Act draws a clear distinction between providers (those who develop or place AI systems on the market) and deployers (those who use AI systems in a professional context).
+
+Deployers of high-risk AI systems carry their own obligations under the Act — distinct from those of the provider, and not transferred by contract.
 
 An organization using a vendor's AI-powered credit decisioning tool, claims processing system, or recruitment platform is a deployer under the Act. It has obligations for human oversight, record-keeping, and transparency regardless of what the vendor's documentation says.
 
@@ -63,7 +67,9 @@ This is not an IT project or a legal filing. It is a governance obligation. The 
 
 **The real deadline is earlier than August 2026**
 
-A structured compliance engagement — inventory, classification, gap analysis, and remediation roadmap — takes time. An organization beginning that work in June will be completing it as enforcement starts, with no margin for the stakeholder friction, rework, and sign-off cycles these projects invariably involve.
+A structured compliance engagement — inventory, classification, gap analysis, and remediation roadmap — takes time.
+
+An organization beginning that work in June will be completing it as enforcement starts, with no margin for the stakeholder friction, rework, and sign-off cycles these projects invariably involve.
 
 Organizations that begin before the end of May can realistically complete the compliance foundation — inventory, classification, gap analysis, and a board-ready roadmap — before August 2.
 
