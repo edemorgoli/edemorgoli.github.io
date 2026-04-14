@@ -23,7 +23,9 @@ At enterprise scale, AI is not deployed from a single point. It is embedded in v
 
 General counsel has a different picture of what is running than the CTO. Operations has approved tools that IT didn't know about. Procurement has signed vendor contracts with embedded AI capabilities that no one has yet reviewed through a regulatory lens.
 
-Before any compliance documentation can begin, an organization needs a complete AI system inventory: every system, across every business unit, classified by function, data input, and decision impact. This is not a desk exercise. It requires structured stakeholder interviews, vendor contract review, and cross-functional coordination. Organizations consistently underestimate the effort — and overestimate how much they already know.
+Before any compliance documentation can begin, an organization needs a complete AI system inventory: every system, across every business unit, classified by function, data input, and decision impact.
+
+This is not a desk exercise. It requires structured stakeholder interviews, vendor contract review, and cross-functional coordination. Organizations consistently underestimate the effort — and overestimate how much they already know.
 
 ---
 
@@ -51,7 +53,9 @@ Classification requires someone with legal and technical judgment working throug
 
 **The documentation obligation reaches board level**
 
-High-risk AI systems require technical documentation, logging, and record-keeping adequate for regulatory audit. More significantly, the obligation to establish and maintain a risk management system for each high-risk AI system is organizational — it requires documented processes, named owners, and governance structures that leadership can stand behind.
+High-risk AI systems require technical documentation, logging, and record-keeping adequate for regulatory audit.
+
+More significantly, the obligation to establish and maintain a risk management system for each high-risk AI system is organizational — it requires documented processes, named owners, and governance structures that leadership can stand behind.
 
 This is not an IT project or a legal filing. It is a governance obligation. The board cannot credibly attest to AI compliance if the organization cannot demonstrate that it knows what systems it operates, how they are classified, and what controls govern them.
 
