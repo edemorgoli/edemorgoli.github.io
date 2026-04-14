@@ -11,7 +11,9 @@ The EU AI Act becomes broadly enforceable on 2 August 2026. Fines for non-compli
 
 Most of those programmes are addressing the right problem in the wrong order.
 
-The Act's requirements — risk management systems, technical documentation, human oversight mechanisms, transparency obligations, data governance — are demanding but manageable. The harder problem sits upstream of them. Before an organization can meet any requirement, it needs to know what AI systems it actually operates, how they're classified, and who holds the compliance obligation for each one. Most organizations do not yet have those answers.
+The Act's requirements — risk management systems, technical documentation, human oversight mechanisms, transparency obligations, data governance — are demanding but manageable. The harder problem sits upstream of them.
+
+Before an organization can meet any requirement, it needs to know what AI systems it actually operates, how they're classified, and who holds the compliance obligation for each one. Most organizations do not yet have those answers.
 
 ---
 
