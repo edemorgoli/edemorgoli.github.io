@@ -16,7 +16,7 @@ I should be direct about where I am writing from. I have been advising and opera
 
 A traditional strategy engagement does not consist primarily of senior judgement. It consists of the analytical machinery that surrounds senior judgement and makes it presentable: benchmarking, peer comparisons, process mapping, stakeholder interviews, synthesis documents, committee-ready slides, status reports, and the week-by-week cadence of meetings that converts raw material into conclusions.
 
-This scaffolding is labour-intensive, and it is what makes a twelve-week diagnostic cost what a twelve-week diagnostic costs. It is also, very specifically, the thing that large language models and their adjacent tools are now genuinely good at. A small team equipped with current tools can produce in four weeks what used to take a team of four over twelve. That is not a prediction. It is already true in several of my engagements this year.
+This analytical support for organizing and delivering senior judgment is labor-intensive, and it is what makes a twelve-week diagnostic cost what it costs. It is also, very specifically, the thing that large language models and their adjacent tools are now genuinely good at. A small team equipped with current tools can produce in four weeks what used to take a team of four over twelve. That is not a prediction. It is already true in several of my engagements this year.
 
 This has two notable downstream effects. It compresses the time-to-insight of any well-executed engagement. And it shrinks the pricing of any engagement component for which the primary value was the scaffolding itself.
 
@@ -62,4 +62,6 @@ That is the work. It is difficult, but it is not mysterious.
 
 ## What this series is about
 
-This is the first in a short series of essays in which I explore what AI is doing to the work my clients aim to govern, and to my own work as I seek to serve them. The next essay turns to a specific failure mode I am now seeing consistently inside large organizations that have moved past their initial AI experiments: the uncoordinated proliferation of autonomous systems across the enterprise, and what it takes to govern it well. This is a problem with a clear shape and a workable response — which is, ultimately, what this series is about.
+This is the first in a short series of essays in which I explore what AI is doing to the work my clients aim to govern, and to my own work as I seek to serve them.
+
+The next essay turns to a specific failure mode I am now seeing consistently inside large organizations that have moved past their initial AI experiments: the uncoordinated proliferation of autonomous systems across the enterprise, and what it takes to govern it well. This is a problem with a clear shape and a workable response — which is, ultimately, what this series is about.
