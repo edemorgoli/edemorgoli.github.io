@@ -1,0 +1,1638 @@
+<!doctype html>
+<!--
+  EU AI Act Readiness Self-Assessment
+  E2M Consulting Services — eric@demorgoli.com
+  Self-contained: no external scripts, no external fonts, no analytics.
+
+  ─── DEPLOYMENT ─────────────────────────────────────────────────────────
+  Place this file at /tools/eu-ai-act-readiness/index.html in the Jekyll repo.
+  Add Jekyll front matter at the top of this file if you want it in the
+  default site layout, or leave it as-is to render standalone.
+
+  Two configuration points below need your input before publishing:
+
+1. EMAIL_FORM_ENDPOINT (in <script> at bottom):
+    to be replaced with my Formspree (or alternative) endpoint URL.
+    Until configured, the email option will display a "configuration pending" message.
+
+2. BOOKING_LINK (in <script> at bottom):
+    defaults to a mailto: link to eric@demorgoli.com with subject "20-minute scoping call".
+    Replace with my Calendly / Cal.com / other booking URL when ready.
+  ────────────────────────────────────────────────────────────────────────
+timestamp: [2026-05-04 14:44]
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="A 10-minute self-assessment of your organisation's readiness for the EU AI Act enforcement deadline of 2 August 2026."
+        />
+        <meta name="robots" content="index, follow" />
+        <title>
+            EU AI Act Readiness — Self-Assessment | E2M Consulting Services
+        </title>
+
+        <style>
+            /* ─── Design system ────────────────────────────────────────────────── */
+            :root {
+                --navy: #1b2a4a;
+                --copper: #b87333;
+                --teal: #3d7c8c;
+                --plum: #6b3a5b;
+                --amber: #d4a843;
+                --bg: #f7f5f2;
+                --card: #ffffff;
+                --card-soft: #f0ede8;
+                --text: #1a1a2e;
+                --muted: #6b7280;
+                --border: #d1cbc3;
+                --success: #6b8f71;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family:
+                    Calibri,
+                    -apple-system,
+                    "Segoe UI",
+                    system-ui,
+                    sans-serif;
+                font-size: 16px;
+                line-height: 1.6;
+                color: var(--text);
+                background: var(--bg);
+                -webkit-font-smoothing: antialiased;
+            }
+            h1,
+            h2,
+            h3 {
+                font-family: Georgia, "Times New Roman", serif;
+                color: var(--navy);
+                font-weight: 700;
+            }
+            h1 {
+                font-size: 2.2rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+            h3 {
+                font-size: 1.15rem;
+                line-height: 1.4;
+                margin-bottom: 0.5rem;
+            }
+            p {
+                margin-bottom: 1rem;
+            }
+            a {
+                color: var(--teal);
+                text-decoration: underline;
+                text-underline-offset: 2px;
+            }
+            a:hover {
+                color: var(--navy);
+            }
+
+            /* ─── Layout ──────────────────────────────────────────────────────── */
+            .container {
+                max-width: 760px;
+                margin: 0 auto;
+                padding: 2rem 1.25rem 4rem;
+            }
+            .label-uppercase {
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.14em;
+                color: var(--muted);
+                font-weight: 700;
+                margin-bottom: 0.4rem;
+            }
+            .rule {
+                height: 2px;
+                background: var(--copper);
+                margin: 1.5rem 0 2rem;
+            }
+
+            /* ─── Intro screen ────────────────────────────────────────────────── */
+            .intro h1 {
+                margin-top: 0.4rem;
+            }
+            .intro .subtitle {
+                font-family: Georgia, serif;
+                font-size: 1.25rem;
+                color: var(--muted);
+                font-style: italic;
+                margin-bottom: 2rem;
+            }
+            .intro-box {
+                background: var(--card);
+                border-left: 4px solid var(--copper);
+                padding: 1.25rem 1.5rem;
+                margin: 1.5rem 0;
+            }
+            .intro-box h3 {
+                color: var(--navy);
+                margin-bottom: 0.6rem;
+            }
+            .intro-box p:last-child {
+                margin-bottom: 0;
+            }
+            .intro-meta {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+            .intro-meta .item {
+                background: var(--card-soft);
+                padding: 1rem 1.1rem;
+                border-radius: 4px;
+            }
+            .intro-meta .item .num {
+                font-family: Georgia, serif;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: var(--navy);
+                margin-bottom: 0.2rem;
+            }
+            .intro-meta .item .label {
+                font-size: 0.85rem;
+                color: var(--muted);
+            }
+            .privacy-note {
+                background: var(--card-soft);
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                padding: 1.1rem 1.3rem;
+                margin: 2rem 0;
+            }
+            .privacy-note .title {
+                font-weight: 700;
+                color: var(--navy);
+                font-size: 0.95rem;
+                margin-bottom: 0.4rem;
+            }
+            .privacy-note p {
+                font-size: 0.92rem;
+                color: var(--text);
+                margin: 0;
+            }
+
+            /* ─── Buttons ─────────────────────────────────────────────────────── */
+            .btn {
+                display: inline-block;
+                background: var(--navy);
+                color: #fff;
+                border: 0;
+                padding: 0.85rem 1.75rem;
+                font-family: Calibri, sans-serif;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+                text-decoration: none;
+                border-radius: 4px;
+                transition: background 0.15s ease;
+            }
+            .btn:hover {
+                background: #0f1a30;
+                color: #fff;
+            }
+            .btn-secondary {
+                background: transparent;
+                color: var(--navy);
+                border: 1px solid var(--border);
+            }
+            .btn-secondary:hover {
+                background: var(--card-soft);
+                color: var(--navy);
+            }
+            .btn-amber {
+                background: var(--amber);
+                color: var(--navy);
+            }
+            .btn-amber:hover {
+                background: #c4982f;
+                color: var(--navy);
+            }
+            .btn-disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+            .btn-disabled:hover {
+                background: var(--navy);
+            }
+
+            .btn-row {
+                display: flex;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                margin-top: 1.5rem;
+            }
+            .btn-row.center {
+                justify-content: center;
+            }
+
+            /* ─── Phase / question screens ────────────────────────────────────── */
+            .progress-bar {
+                height: 6px;
+                background: var(--card-soft);
+                border-radius: 3px;
+                overflow: hidden;
+                margin-bottom: 0.5rem;
+            }
+            .progress-bar .fill {
+                height: 100%;
+                background: var(--navy);
+                transition: width 0.3s ease;
+                width: 0%;
+            }
+            .progress-meta {
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.8rem;
+                color: var(--muted);
+                margin-bottom: 1.5rem;
+            }
+
+            .phase-header {
+                display: flex;
+                align-items: baseline;
+                gap: 0.75rem;
+                margin-bottom: 0.5rem;
+            }
+            .phase-num {
+                font-family: Georgia, serif;
+                font-size: 0.9rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                padding: 0.25rem 0.75rem;
+                color: #fff;
+                border-radius: 3px;
+            }
+            .phase-num.copper {
+                background: var(--copper);
+            }
+            .phase-num.plum {
+                background: var(--plum);
+            }
+            .phase-num.teal {
+                background: var(--teal);
+            }
+            .phase-num.amber {
+                background: var(--amber);
+                color: var(--navy);
+            }
+
+            .phase-intro {
+                color: var(--muted);
+                font-style: italic;
+                margin: 1rem 0 2rem;
+                border-left: 3px solid var(--border);
+                padding-left: 1rem;
+            }
+
+            .question {
+                background: var(--card);
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                padding: 1.25rem 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .question .q-num {
+                font-size: 0.78rem;
+                color: var(--muted);
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                margin-bottom: 0.4rem;
+            }
+            .question .q-text {
+                font-size: 1.02rem;
+                line-height: 1.5;
+                color: var(--text);
+                margin-bottom: 1rem;
+            }
+            .question .q-text strong {
+                color: var(--navy);
+            }
+            .options {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                gap: 0.5rem;
+            }
+            .option label {
+                display: block;
+                padding: 0.55rem 0.85rem;
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                cursor: pointer;
+                text-align: center;
+                font-size: 0.92rem;
+                transition: all 0.12s ease;
+                background: #fff;
+                user-select: none;
+            }
+            .option input[type="radio"] {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+            }
+            .option label:hover {
+                border-color: var(--navy);
+            }
+            .option input[type="radio"]:checked + label {
+                background: var(--navy);
+                color: #fff;
+                border-color: var(--navy);
+                font-weight: 600;
+            }
+            .option input[type="radio"]:focus-visible + label {
+                outline: 2px solid var(--amber);
+                outline-offset: 2px;
+            }
+
+            /* ─── Results screen ──────────────────────────────────────────────── */
+            .result-headline {
+                background: var(--card);
+                border: 1px solid var(--border);
+                border-top: 6px solid var(--navy);
+                padding: 1.75rem 1.75rem 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .result-headline.copper {
+                border-top-color: var(--copper);
+            }
+            .result-headline.amber {
+                border-top-color: var(--amber);
+            }
+            .result-headline.teal {
+                border-top-color: var(--teal);
+            }
+            .result-headline.plum {
+                border-top-color: var(--plum);
+            }
+
+            .result-headline .score {
+                font-family: Georgia, serif;
+                font-size: 3.4rem;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+                margin-bottom: 0.2rem;
+            }
+            .result-headline .score .pct {
+                font-size: 1.6rem;
+                color: var(--muted);
+            }
+            .result-headline .band-label {
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                font-weight: 700;
+                margin-bottom: 0.6rem;
+            }
+            .result-headline .band-name {
+                font-family: Georgia, serif;
+                font-size: 1.4rem;
+                color: var(--navy);
+                font-weight: 700;
+                margin-bottom: 0.6rem;
+            }
+            .result-headline .band-summary {
+                color: var(--text);
+                line-height: 1.5;
+            }
+
+            .phase-scores {
+                background: var(--card);
+                border: 1px solid var(--border);
+                padding: 1.5rem 1.75rem;
+                margin-bottom: 1.5rem;
+            }
+            .phase-row {
+                display: grid;
+                grid-template-columns: 1.5rem 1fr auto;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid var(--card-soft);
+            }
+            .phase-row:last-child {
+                border-bottom: 0;
+            }
+            .phase-dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                margin: 0 auto;
+            }
+            .phase-row .name {
+                font-weight: 600;
+                color: var(--navy);
+            }
+            .phase-row .meta {
+                font-size: 0.85rem;
+                color: var(--muted);
+                margin-top: 2px;
+            }
+            .phase-row .pscore {
+                font-family: Georgia, serif;
+                font-size: 1.05rem;
+                font-weight: 700;
+                color: var(--navy);
+                white-space: nowrap;
+            }
+            .phase-row .pbar {
+                grid-column: 2 / 4;
+                height: 4px;
+                background: var(--card-soft);
+                border-radius: 2px;
+                overflow: hidden;
+                margin-top: 6px;
+            }
+            .phase-row .pbar .pfill {
+                height: 100%;
+                transition: width 0.5s ease;
+            }
+
+            .focus-areas {
+                background: var(--card);
+                border: 1px solid var(--border);
+                padding: 1.5rem 1.75rem;
+                margin-bottom: 1.5rem;
+            }
+            .focus-areas .item {
+                padding: 0.7rem 0;
+                border-bottom: 1px solid var(--card-soft);
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 0.7rem;
+                align-items: start;
+            }
+            .focus-areas .item:last-child {
+                border-bottom: 0;
+            }
+            .focus-areas .marker {
+                width: 6px;
+                align-self: stretch;
+                border-radius: 2px;
+            }
+            .focus-areas .marker.no {
+                background: var(--copper);
+            }
+            .focus-areas .marker.unsure {
+                background: var(--amber);
+            }
+            .focus-areas .item .text {
+                font-size: 0.93rem;
+                line-height: 1.45;
+                color: var(--text);
+            }
+            .focus-areas .item .badge {
+                font-size: 0.68rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--muted);
+                font-weight: 700;
+                margin-bottom: 2px;
+                display: block;
+            }
+
+            .next-steps {
+                background: var(--card);
+                border: 1px solid var(--border);
+                border-left: 4px solid var(--teal);
+                padding: 1.5rem 1.75rem;
+                margin-bottom: 1.5rem;
+            }
+            .next-steps ul {
+                list-style: none;
+                padding-left: 0;
+                margin: 0.5rem 0 0;
+            }
+            .next-steps li {
+                padding: 0.5rem 0;
+                padding-left: 1.5rem;
+                position: relative;
+                font-size: 0.95rem;
+            }
+            .next-steps li::before {
+                content: "→";
+                position: absolute;
+                left: 0;
+                color: var(--teal);
+                font-weight: 700;
+            }
+
+            /* ─── Email / CTA section ─────────────────────────────────────────── */
+            .action-card {
+                background: var(--card);
+                border: 1px solid var(--border);
+                padding: 1.5rem 1.75rem;
+                margin-bottom: 1.5rem;
+            }
+            .action-card h3 {
+                margin-bottom: 0.6rem;
+            }
+            .email-form {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                margin-top: 1rem;
+            }
+            .email-form input[type="email"] {
+                flex: 1;
+                min-width: 200px;
+                padding: 0.65rem 0.85rem;
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                font-family: inherit;
+                font-size: 0.95rem;
+            }
+            .email-form input[type="email"]:focus {
+                outline: 2px solid var(--amber);
+                outline-offset: 2px;
+                border-color: var(--navy);
+            }
+            .email-status {
+                font-size: 0.88rem;
+                margin-top: 0.75rem;
+                padding: 0.6rem 0.85rem;
+                border-radius: 4px;
+                display: none;
+            }
+            .email-status.success {
+                background: #e8f0e9;
+                color: #2a4f32;
+                border: 1px solid #b8d4bb;
+                display: block;
+            }
+            .email-status.error {
+                background: #f5e8e8;
+                color: #6b2a2a;
+                border: 1px solid #d4b8b8;
+                display: block;
+            }
+            .email-status.info {
+                background: var(--card-soft);
+                color: var(--text);
+                border: 1px solid var(--border);
+                display: block;
+            }
+
+            .cta-card {
+                background: var(--navy);
+                color: #fff;
+                padding: 2rem 1.75rem;
+                border-radius: 4px;
+                text-align: center;
+            }
+            .cta-card h3 {
+                color: #fff;
+                font-size: 1.35rem;
+            }
+            .cta-card p {
+                color: rgba(255, 255, 255, 0.85);
+                margin-bottom: 1.25rem;
+            }
+            .cta-card .btn {
+                background: var(--amber);
+                color: var(--navy);
+            }
+            .cta-card .btn:hover {
+                background: #c4982f;
+                color: var(--navy);
+            }
+
+            /* ─── Footer ──────────────────────────────────────────────────────── */
+            footer.tool-footer {
+                text-align: center;
+                margin-top: 3rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid var(--border);
+                color: var(--muted);
+                font-size: 0.82rem;
+            }
+            footer.tool-footer a {
+                color: var(--muted);
+            }
+            footer.tool-footer a:hover {
+                color: var(--navy);
+            }
+
+            /* ─── Screen visibility ───────────────────────────────────────────── */
+            .screen {
+                display: none;
+            }
+            .screen.active {
+                display: block;
+                animation: fadeIn 0.25s ease;
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(8px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* ─── Mobile ──────────────────────────────────────────────────────── */
+            @media (max-width: 540px) {
+                h1 {
+                    font-size: 1.8rem;
+                }
+                h2 {
+                    font-size: 1.3rem;
+                }
+                .container {
+                    padding: 1.5rem 1rem 3rem;
+                }
+                .options {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                .result-headline .score {
+                    font-size: 2.6rem;
+                }
+                .btn {
+                    padding: 0.75rem 1.25rem;
+                }
+                .btn-row {
+                    flex-direction: column;
+                }
+                .btn-row .btn {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+
+            /* ─── Print ───────────────────────────────────────────────────────── */
+            @media print {
+                .no-print {
+                    display: none !important;
+                }
+                body {
+                    background: #fff;
+                }
+                .container {
+                    max-width: 100%;
+                    padding: 0;
+                }
+                .result-headline,
+                .phase-scores,
+                .focus-areas,
+                .next-steps {
+                    page-break-inside: avoid;
+                    border: 1px solid #888;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- ────────── INTRO SCREEN ────────── -->
+            <section
+                class="screen intro active"
+                id="screen-intro"
+                aria-labelledby="intro-title"
+            >
+                <div class="label-uppercase">E2M Consulting Services</div>
+                <h1 id="intro-title">EU AI Act Readiness</h1>
+                <p class="subtitle">A 10-minute self-assessment</p>
+                <div class="rule"></div>
+
+                <p>
+                    The EU AI Act becomes broadly enforceable on
+                    <strong>2 August 2026</strong>. High-risk AI system
+                    requirements — risk management, data governance, human
+                    oversight, transparency, documentation — move from
+                    preparation to legal obligation. This assessment helps you
+                    locate where your organisation stands across the four phases
+                    of compliance:
+                    <strong
+                        >Inventory, Classification, Gap Analysis, and
+                        Roadmap.</strong
+                    >
+                </p>
+
+                <div class="intro-box">
+                    <h3>What you'll get</h3>
+                    <p>
+                        An overall readiness score, a per-phase breakdown
+                        showing where attention is most needed, and a list of
+                        focus areas drawn from your specific responses. You can
+                        download the result.
+                    </p>
+                </div>
+
+                <!--
+(I didn't yet activate the email feature)
+REMOVED THE MENTION OF THE EMAIL OPTION: "have it sent to your email, or both."
+-->
+
+                <div class="intro-meta">
+                    <div class="item">
+                        <div class="num">18</div>
+                        <div class="label">Targeted questions</div>
+                    </div>
+                    <div class="item">
+                        <div class="num">~ 9 min</div>
+                        <div class="label">To complete</div>
+                    </div>
+                    <div class="item">
+                        <div class="num">4 phases</div>
+                        <div class="label">Of compliance covered</div>
+                    </div>
+                </div>
+
+                <div class="privacy-note">
+                    <div class="title">Privacy</div>
+                    <p>
+                        This assessment runs entirely in your browser. I do not
+                        see your answers, and no record is kept of them on any
+                        server.
+                    </p>
+                </div>
+
+                <!--
+SECOND PART OF THE DICLAIMER REMOVED (since I didn't activate the feature)
+If you choose to email the result to yourself at the end, I will receive a notification with the email address you entered — and only that. Your answers are not transmitted.
+-->
+
+                <div class="btn-row">
+                    <button class="btn" type="button" id="btn-start">
+                        Begin assessment →
+                    </button>
+                </div>
+            </section>
+
+            <!-- ────────── QUESTION SCREENS (one per phase) ────────── -->
+            <section class="screen" id="screen-questions" aria-live="polite">
+                <div class="progress-bar">
+                    <div class="fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-meta">
+                    <span id="progress-text">Phase 1 of 4</span>
+                    <span id="progress-count">0 of 18 answered</span>
+                </div>
+
+                <!-- The phase content is rendered dynamically into this container -->
+                <div id="phase-container"></div>
+
+                <div class="btn-row">
+                    <button
+                        class="btn btn-secondary"
+                        type="button"
+                        id="btn-back"
+                    >
+                        ← Back
+                    </button>
+                    <button class="btn" type="button" id="btn-next">
+                        Next →
+                    </button>
+                </div>
+            </section>
+
+            <!-- ────────── RESULTS SCREEN ────────── -->
+            <section
+                class="screen"
+                id="screen-results"
+                aria-labelledby="results-title"
+            >
+                <div class="label-uppercase">Your assessment</div>
+                <h1 id="results-title">Readiness result</h1>
+                <div class="rule"></div>
+
+                <div class="result-headline" id="result-headline">
+                    <div class="band-label" id="band-label">
+                        Overall readiness
+                    </div>
+                    <div class="score" id="overall-score">
+                        —<span class="pct">%</span>
+                    </div>
+                    <div class="band-name" id="band-name">—</div>
+                    <div class="band-summary" id="band-summary">—</div>
+                </div>
+
+                <div class="phase-scores">
+                    <h3>By phase</h3>
+                    <div id="phase-rows"></div>
+                </div>
+
+                <div class="focus-areas" id="focus-section">
+                    <h3>Focus areas</h3>
+                    <p
+                        style="
+                            font-size: 0.92rem;
+                            color: var(--muted);
+                            margin-bottom: 0.5rem;
+                        "
+                    >
+                        Drawn from your responses — items rated <em>No</em> or
+                        <em>Don't know</em>.
+                    </p>
+                    <div id="focus-list"></div>
+                </div>
+
+                <div class="next-steps">
+                    <h3>Suggested next steps</h3>
+                    <ul id="next-steps-list"></ul>
+                </div>
+
+                <!-- Privacy reminder -->
+                <div class="privacy-note">
+                    <div class="title">Reminder</div>
+                    <p>
+                        Your answers were never transmitted. The result above
+                        was computed in your browser. No record is kept
+                        anywhere. The download below is generated locally on
+                        your device.
+                    </p>
+                </div>
+
+                <!-- Download -->
+                <div class="action-card">
+                    <h3>Download your result</h3>
+                    <p
+                        style="
+                            font-size: 0.92rem;
+                            color: var(--muted);
+                            margin-bottom: 0.75rem;
+                        "
+                    >
+                        A single HTML file you can save, share with colleagues,
+                        or print to PDF. Generated locally — fully private.
+                    </p>
+                    <button
+                        class="btn btn-secondary"
+                        type="button"
+                        id="btn-download"
+                    >
+                        Download as HTML
+                    </button>
+                </div>
+
+                <!--
+(DEACTIVATED THE EMAIL OPTION)
+  <div class="action-card">
+    <h3>Or have it emailed to you</h3>
+    <p style="font-size: 0.92rem; color: var(--muted); margin-bottom: 0.5rem;">
+      If you'd prefer a copy by email, enter your address below. Note that I (Eric de Morgoli)
+      will receive a notification of the email address used — your answers are not shared.
+    </p>
+    <form class="email-form" id="email-form" novalidate>
+      <input type="email" id="email-input" placeholder="you@company.com" aria-label="Your email address" required>
+      <button class="btn" type="submit" id="btn-email">Send to my email</button>
+    </form>
+    <div class="email-status" id="email-status" role="status"></div>
+  </div>
+-->
+
+                <!-- CTA -->
+                <!-- HARD CODED MAILTO -->
+                <div class="cta-card">
+                    <h3>Want to discuss what this means in your context?</h3>
+                    <p>
+                        A complimentary 20-minute conversation, no preparation
+                        required.
+                    </p>
+                    <a
+                        class="btn"
+                        id="btn-book"
+                        href="mailto:eric@demorgoli.com?subject=20-minute%20scoping%20call%20—%20EU%20AI%20Act%20readiness&body=Hi%20Eric%2C%0A%0AI%20completed%20the%20EU%20AI%20Act%20readiness%20self-assessment%20on%20your%20website%20and%20would%20like%20to%20schedule%20a%2020-minute%20call%20to%20discuss.%0A%0AAvailability%3A%0A%0AThanks%2C"
+                        >Schedule a 20-minute call →</a
+                    >
+                </div>
+
+                <div class="btn-row center" style="margin-top: 2rem">
+                    <button
+                        class="btn btn-secondary"
+                        type="button"
+                        id="btn-restart"
+                    >
+                        Start over
+                    </button>
+                </div>
+            </section>
+
+            <footer class="tool-footer no-print">
+                <p>
+                    E2M Consulting Services &nbsp;·&nbsp;
+                    <a href="mailto:eric@demorgoli.com">eric@demorgoli.com</a>
+                    &nbsp;·&nbsp;
+                    <a href="https://www.demorgoli.com">www.demorgoli.com</a>
+                </p>
+                <p style="margin-top: 0.5rem; font-size: 0.78rem">
+                    This tool provides a structured overview of EU AI Act
+                    readiness. It does not constitute legal advice. The Act and
+                    accompanying guidance continue to evolve.
+                </p>
+            </footer>
+        </div>
+
+        <script>
+            /* ────────── CONFIGURATION ──────────────────────────────────────────────
+Two endpoints to set before publishing. */
+
+            // Replace with your Formspree (or alternative) form endpoint.
+            // While the placeholder below is in place, the email button shows a
+            // "configuration pending" message and the download path remains primary.
+            // Sign up at formspree.io → create form → copy the URL here.
+            const EMAIL_FORM_ENDPOINT = "https://formspree.io/f/mnjwpgdl";
+
+            // Booking link. Defaults to a mailto: that opens a pre-filled message to
+            // eric@demorgoli.com. Replace with your Calendly/Cal.com URL when ready.
+            const BOOKING_LINK =
+                "mailto:eric@demorgoli.com?subject=20-minute%20scoping%20call%20—%20EU%20AI%20Act%20readiness&body=Hi%20Eric%2C%0A%0AI%20completed%20the%20EU%20AI%20Act%20readiness%20self-assessment%20on%20your%20website%20and%20would%20like%20to%20schedule%20a%2020-minute%20call%20to%20discuss.%0A%0AAvailability%3A%0A%0AThanks%2C";
+
+            /* ────────── ASSESSMENT DATA ───────────────────────────────────────── */
+            const PHASES = [
+                {
+                    id: "inventory",
+                    num: 1,
+                    name: "AI System Inventory",
+                    color: "copper",
+                    intro: "Before you can comply with anything, you need to know what AI systems you operate. This phase tests whether you have a complete and validated picture — including vendor-procured and embedded AI.",
+                    questions: [
+                        {
+                            id: "q1",
+                            text: "Do you have a current inventory of AI systems used across your organisation — including in-house, vendor-procured, and AI capabilities embedded in SaaS platforms?",
+                        },
+                        {
+                            id: "q2",
+                            text: "Has the inventory been built with input from technology, legal/compliance, and business unit owners — not from any single team alone?",
+                        },
+                        {
+                            id: "q3",
+                            text: "For each AI system, is a responsible business owner identified — and is overall accountability for AI Act compliance assigned at C-suite or board level?",
+                        },
+                        {
+                            id: "q4",
+                            text: "Do you have a documented view of where each system is operated, where data subjects are located, and which jurisdictions you fall within for the Act?",
+                        },
+                    ],
+                },
+                {
+                    id: "classification",
+                    num: 2,
+                    name: "Risk Classification",
+                    color: "plum",
+                    intro: "Annex III matching is not a checklist exercise — it requires legal and technical judgment. Profiling, prohibited practices, and Article 6(3) exemptions each demand explicit screening.",
+                    questions: [
+                        {
+                            id: "q5",
+                            text: "Has each AI system been screened against the eight Annex III high-risk categories (biometrics, critical infrastructure, education, employment, essential services, law enforcement, migration, justice)?",
+                        },
+                        {
+                            id: "q6",
+                            text: "Has each system been explicitly screened against Article 5 prohibited practices — including emotion recognition in workplaces, social scoring, and untargeted biometric scraping?",
+                        },
+                        {
+                            id: "q7",
+                            text: "Is your role (provider, deployer, or both) documented for each system — and where vendor contracts are involved, have you reviewed which compliance obligations remain with you?",
+                        },
+                        {
+                            id: "q8",
+                            text: "Where Article 6(3) exemption from high-risk classification is being claimed, has the assessment been documented — and has the profiling override been explicitly checked?",
+                        },
+                    ],
+                },
+                {
+                    id: "gaps",
+                    num: 3,
+                    name: "Compliance Gap Analysis",
+                    color: "teal",
+                    intro: "For each high-risk system, six requirement areas drive the documentation and operational obligations. Maturity in any one of them does not substitute for gaps in another.",
+                    questions: [
+                        {
+                            id: "q9",
+                            text: "<strong>Risk management (Article 9)</strong> — Is there a documented, ongoing risk management process for each high-risk AI system, integrated with your enterprise risk function?",
+                        },
+                        {
+                            id: "q10",
+                            text: "<strong>Data governance (Article 10)</strong> — Are training, validation, and testing datasets documented, with bias and representativeness assessed for the intended purpose?",
+                        },
+                        {
+                            id: "q11",
+                            text: "<strong>Technical documentation (Article 11)</strong> — Is Annex IV-aligned technical documentation prepared and maintained for each high-risk system?",
+                        },
+                        {
+                            id: "q12",
+                            text: "<strong>Logging and traceability (Article 12)</strong> — Do high-risk systems automatically log inputs, outputs, override events, and substantial modifications?",
+                        },
+                        {
+                            id: "q13",
+                            text: "<strong>Human oversight and transparency (Articles 13, 14, 50)</strong> — Are affected persons informed when AI is involved, and is meaningful human oversight designed into each system?",
+                        },
+                        {
+                            id: "q14",
+                            text: "<strong>Accuracy, robustness, cybersecurity (Article 15)</strong> — Are performance metrics monitored post-deployment, and are cybersecurity and adversarial-testing controls proportionate to risk?",
+                        },
+                    ],
+                },
+                {
+                    id: "roadmap",
+                    num: 4,
+                    name: "Compliance Roadmap",
+                    color: "amber",
+                    intro: "Knowing your gaps is not the same as having a credible plan to close them by 2 August 2026. This phase tests organisational readiness to execute.",
+                    questions: [
+                        {
+                            id: "q15",
+                            text: "Is there a board-approved compliance plan for the EU AI Act, with target completion before 2 August 2026?",
+                        },
+                        {
+                            id: "q16",
+                            text: "For each identified gap, are owners, resources, and target dates assigned?",
+                        },
+                        {
+                            id: "q17",
+                            text: "Has a Fundamental Rights Impact Assessment (FRIA) been completed for each Annex III high-risk system where you act as deployer?",
+                        },
+                        {
+                            id: "q18",
+                            text: "Is your legal and compliance function actively monitoring EU AI Act guidance, member-state implementations, and standards as they emerge?",
+                        },
+                    ],
+                },
+            ];
+
+            const ANSWER_OPTIONS = [
+                { value: "yes", label: "Yes", score: 3 },
+                { value: "partial", label: "Partial", score: 2 },
+                { value: "no", label: "No", score: 0 },
+                { value: "unsure", label: "Don't know", score: 0 },
+            ];
+
+            const TOTAL_QUESTIONS = PHASES.reduce(
+                (n, p) => n + p.questions.length,
+                0,
+            ); // 18
+            const MAX_SCORE = TOTAL_QUESTIONS * 3; // 54
+
+            /* ────────── STATE ─────────────────────────────────────────────────── */
+            const state = {
+                phaseIdx: 0,
+                answers: {}, // { q1: "yes", q2: "partial", ... }
+            };
+
+            /* ────────── HELPERS ───────────────────────────────────────────────── */
+            const $ = (sel) => document.querySelector(sel);
+            const $$ = (sel) => document.querySelectorAll(sel);
+
+            function show(screenId) {
+                $$(".screen").forEach((s) => s.classList.remove("active"));
+                $("#" + screenId).classList.add("active");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+
+            function answeredCount() {
+                return Object.keys(state.answers).length;
+            }
+
+            function phaseAnsweredCount(phase) {
+                return phase.questions.filter((q) => state.answers[q.id])
+                    .length;
+            }
+
+            function totalScore() {
+                let s = 0;
+                for (const phase of PHASES) {
+                    for (const q of phase.questions) {
+                        const ans = state.answers[q.id];
+                        if (ans) {
+                            s += ANSWER_OPTIONS.find(
+                                (o) => o.value === ans,
+                            ).score;
+                        }
+                    }
+                }
+                return s;
+            }
+
+            function phaseScore(phase) {
+                let s = 0,
+                    max = phase.questions.length * 3;
+                for (const q of phase.questions) {
+                    const ans = state.answers[q.id];
+                    if (ans) {
+                        s += ANSWER_OPTIONS.find((o) => o.value === ans).score;
+                    }
+                }
+                return {
+                    score: s,
+                    max,
+                    pct: max ? Math.round((s / max) * 100) : 0,
+                };
+            }
+
+            function getBand(pct) {
+                if (pct >= 80)
+                    return {
+                        key: "strong",
+                        name: "Strong baseline",
+                        color: "teal",
+                        summary:
+                            "Your organisation has built a solid compliance foundation. Remaining work is targeted refinement to close to the 2 August 2026 deadline — not structural reconstruction. The risk now is over-confidence: the gap between strong and complete is often where late-stage exposure sits.",
+                    };
+                if (pct >= 50)
+                    return {
+                        key: "moderate",
+                        name: "Foundation in place — gaps to close",
+                        color: "amber",
+                        summary:
+                            "A compliance foundation is underway, but specific phases or requirement areas are materially behind. Closing them before August 2026 is achievable with structured engagement; doing so without a clear sequencing plan is the most common cause of failure at this maturity level.",
+                    };
+                if (pct >= 20)
+                    return {
+                        key: "limited",
+                        name: "Material exposure",
+                        color: "copper",
+                        summary:
+                            "The current state leaves the organisation materially exposed. The volume of work required before August 2026 is significant — but the structure of the problem is well-understood, and with a clear scope and sequencing, the foundation can be built in time.",
+                    };
+                return {
+                    key: "critical",
+                    name: "Significant gap — immediate attention required",
+                    color: "copper",
+                    summary:
+                        "The assessment indicates that core compliance prerequisites are not yet in place. With less time remaining before enforcement, the priority is establishing inventory, classification, and governance accountability quickly — before deeper documentation work can start.",
+                };
+            }
+
+            function getNextStepsByPhase() {
+                const steps = [];
+                const ranked = PHASES.map((p) => ({
+                    phase: p,
+                    ...phaseScore(p),
+                })).sort((a, b) => a.pct - b.pct);
+
+                // Worst-performing phase first
+                const worst = ranked[0];
+                if (worst.pct < 80) {
+                    if (worst.phase.id === "inventory") {
+                        steps.push(
+                            "Start with a complete AI System Inventory across business units — without this foundation, classification and gap analysis cannot proceed.",
+                        );
+                    } else if (worst.phase.id === "classification") {
+                        steps.push(
+                            "Prioritise a structured classification of every system in your inventory against Annex III, Article 5, and Article 6(3) — with documented rationale for each designation.",
+                        );
+                    } else if (worst.phase.id === "gaps") {
+                        steps.push(
+                            "Conduct a gap-by-gap assessment of each high-risk system across the six requirement areas — risk management, data governance, technical documentation, logging, transparency / human oversight, and accuracy / robustness / cybersecurity.",
+                        );
+                    } else if (worst.phase.id === "roadmap") {
+                        steps.push(
+                            "Translate identified gaps into a board-ready compliance roadmap with assigned owners, resources, and a sequenced path to August 2026.",
+                        );
+                    }
+                }
+
+                // Second-worst
+                if (ranked[1] && ranked[1].pct < 70) {
+                    if (ranked[1].phase.id === "inventory") {
+                        steps.push(
+                            "Strengthen the AI System Inventory — particularly around vendor and embedded AI, where most blind spots occur.",
+                        );
+                    } else if (ranked[1].phase.id === "classification") {
+                        steps.push(
+                            "Tighten classification documentation — especially for vendor systems where deployer obligations are often misunderstood.",
+                        );
+                    } else if (ranked[1].phase.id === "gaps") {
+                        steps.push(
+                            "Address material gaps in the requirement areas where current state is weakest.",
+                        );
+                    } else if (ranked[1].phase.id === "roadmap") {
+                        steps.push(
+                            "Translate the gap inventory into a board-ready, time-bound roadmap with named owners.",
+                        );
+                    }
+                }
+
+                // Universal close
+                steps.push(
+                    "Validate that engagement work begun before end of May 2026 can complete with sufficient lead time before the 2 August 2026 deadline.",
+                );
+
+                return steps;
+            }
+
+            function getFocusItems() {
+                const focus = [];
+                for (const phase of PHASES) {
+                    for (const q of phase.questions) {
+                        const ans = state.answers[q.id];
+                        if (ans === "no" || ans === "unsure") {
+                            focus.push({
+                                phase: phase.name,
+                                phaseColor: phase.color,
+                                phaseId: phase.id,
+                                text: q.text.replace(/<[^>]*>/g, ""),
+                                rating:
+                                    ans === "no" ? "Not in place" : "Uncertain",
+                            });
+                        }
+                    }
+                }
+                return focus;
+            }
+
+            /* ────────── RENDER ────────────────────────────────────────────────── */
+            function renderPhase() {
+                const phase = PHASES[state.phaseIdx];
+
+                // Progress
+                const pctComplete = Math.round(
+                    (state.phaseIdx / PHASES.length) * 100,
+                );
+                $("#progress-fill").style.width = pctComplete + "%";
+                $("#progress-text").textContent =
+                    `Phase ${phase.num} of ${PHASES.length}`;
+                $("#progress-count").textContent =
+                    `${answeredCount()} of ${TOTAL_QUESTIONS} answered`;
+
+                // Phase content
+                let html = `
+    <div class="phase-header">
+      <span class="phase-num ${phase.color}">Phase ${phase.num}</span>
+    </div>
+    <h2>${phase.name}</h2>
+    <p class="phase-intro">${phase.intro}</p>
+  `;
+
+                phase.questions.forEach((q, idx) => {
+                    const qNum =
+                        PHASES.slice(0, state.phaseIdx).reduce(
+                            (n, p) => n + p.questions.length,
+                            0,
+                        ) +
+                        idx +
+                        1;
+                    html += `
+      <fieldset class="question">
+        <legend class="q-num">Question ${qNum}</legend>
+        <div class="q-text">${q.text}</div>
+        <div class="options" role="radiogroup" aria-label="Answer for question ${qNum}">
+          ${ANSWER_OPTIONS.map(
+              (opt) => `
+            <div class="option">
+              <input type="radio" id="${q.id}-${opt.value}" name="${q.id}" value="${opt.value}"
+                ${state.answers[q.id] === opt.value ? "checked" : ""}>
+              <label for="${q.id}-${opt.value}">${opt.label}</label>
+            </div>
+          `,
+          ).join("")}
+        </div>
+      </fieldset>
+    `;
+                });
+
+                $("#phase-container").innerHTML = html;
+
+                // Wire up radio change events
+                $$('#phase-container input[type="radio"]').forEach((input) => {
+                    input.addEventListener("change", (e) => {
+                        state.answers[e.target.name] = e.target.value;
+                        $("#progress-count").textContent =
+                            `${answeredCount()} of ${TOTAL_QUESTIONS} answered`;
+                    });
+                });
+
+                // Update buttons
+                $("#btn-back").style.visibility =
+                    state.phaseIdx === 0 ? "hidden" : "visible";
+                $("#btn-next").textContent =
+                    state.phaseIdx === PHASES.length - 1
+                        ? "See my result →"
+                        : "Next →";
+            }
+
+            function renderResults() {
+                const total = totalScore();
+                const pct = Math.round((total / MAX_SCORE) * 100);
+                const band = getBand(pct);
+
+                // Headline
+                const headline = $("#result-headline");
+                headline.className = "result-headline " + band.color;
+                $("#overall-score").innerHTML =
+                    pct + '<span class="pct">%</span>';
+                $("#band-name").textContent = band.name;
+                $("#band-summary").textContent = band.summary;
+
+                // Phase rows
+                const colorMap = {
+                    copper: "var(--copper)",
+                    plum: "var(--plum)",
+                    teal: "var(--teal)",
+                    amber: "var(--amber)",
+                };
+                const phaseHtml = PHASES.map((phase) => {
+                    const ps = phaseScore(phase);
+                    return `
+      <div class="phase-row">
+        <span class="phase-dot" style="background:${colorMap[phase.color]}"></span>
+        <div>
+          <div class="name">Phase ${phase.num} — ${phase.name}</div>
+          <div class="meta">${ps.score} of ${ps.max} points</div>
+        </div>
+        <div class="pscore">${ps.pct}%</div>
+        <div class="pbar">
+          <div class="pfill" style="width:${ps.pct}%; background:${colorMap[phase.color]};"></div>
+        </div>
+      </div>
+    `;
+                }).join("");
+                $("#phase-rows").innerHTML = phaseHtml;
+
+                // Focus list
+                const focus = getFocusItems();
+                const focusContainer = $("#focus-list");
+                if (focus.length === 0) {
+                    $("#focus-section").style.display = "none";
+                } else {
+                    $("#focus-section").style.display = "block";
+                    focusContainer.innerHTML = focus
+                        .map(
+                            (item) => `
+      <div class="item">
+        <div class="marker ${item.rating === "Not in place" ? "no" : "unsure"}"></div>
+        <div>
+          <span class="badge">${item.phase} · ${item.rating}</span>
+          <div class="text">${item.text}</div>
+        </div>
+      </div>
+    `,
+                        )
+                        .join("");
+                }
+
+                // Next steps
+                const steps = getNextStepsByPhase();
+                $("#next-steps-list").innerHTML = steps
+                    .map((s) => `<li>${s}</li>`)
+                    .join("");
+            }
+
+            /* ────────── DOWNLOAD ──────────────────────────────────────────────── */
+            function buildResultHTML() {
+                const total = totalScore();
+                const pct = Math.round((total / MAX_SCORE) * 100);
+                const band = getBand(pct);
+                const focus = getFocusItems();
+                const steps = getNextStepsByPhase();
+                const date = new Date().toLocaleDateString("en-GB", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                });
+
+                const phaseRows = PHASES.map((phase) => {
+                    const ps = phaseScore(phase);
+                    const ans = phase.questions
+                        .map((q) => {
+                            const a = state.answers[q.id];
+                            const opt = a
+                                ? ANSWER_OPTIONS.find((o) => o.value === a)
+                                : null;
+                            return `<tr><td style="padding:6px 0;font-size:14px;color:#555;width:75%;">${q.text.replace(/<[^>]*>/g, "")}</td><td style="padding:6px 0;font-size:14px;color:#1B2A4A;font-weight:bold;text-align:right;">${opt ? opt.label : "—"}</td></tr>`;
+                        })
+                        .join("");
+                    return `
+      <h3 style="font-family:Georgia,serif;color:#1B2A4A;margin-top:24px;border-bottom:1px solid #D1CBC3;padding-bottom:6px;">
+        Phase ${phase.num} — ${phase.name} — ${ps.pct}%
+      </h3>
+      <table style="width:100%;border-collapse:collapse;">${ans}</table>
+    `;
+                }).join("");
+
+                return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EU AI Act Readiness — My Assessment Result</title>
+<style>
+  body { font-family: Calibri, system-ui, sans-serif; max-width: 720px; margin: 32px auto; padding: 0 24px; color: #1A1A2E; line-height: 1.55; }
+  h1, h2, h3 { font-family: Georgia, serif; color: #1B2A4A; }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  .subtitle { color: #6B7280; font-style: italic; margin-bottom: 24px; }
+  .score-box { background: #F0EDE8; padding: 24px; border-left: 4px solid #1B2A4A; margin: 16px 0 24px; }
+  .score-pct { font-family: Georgia, serif; font-size: 48px; font-weight: bold; color: #1B2A4A; line-height: 1; }
+  .band { font-family: Georgia, serif; font-size: 18px; font-weight: bold; color: #1B2A4A; margin: 8px 0; }
+  ul { padding-left: 20px; }
+  li { margin: 8px 0; }
+  .focus { background: #F0EDE8; padding: 14px 18px; margin-top: 24px; border-radius: 4px; }
+  .focus-item { padding: 8px 0; border-bottom: 1px solid #D1CBC3; font-size: 14px; }
+  .focus-item:last-child { border-bottom: 0; }
+  .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #D1CBC3; font-size: 13px; color: #6B7280; }
+</style>
+</head>
+<body>
+  <p style="font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#6B7280;font-weight:bold;">E2M Consulting Services</p>
+  <h1>EU AI Act Readiness — My Assessment</h1>
+  <p class="subtitle">Self-assessment completed on ${date}</p>
+
+  <div class="score-box">
+    <p style="font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#6B7280;font-weight:bold;margin-bottom:6px;">Overall readiness</p>
+    <div class="score-pct">${pct}%</div>
+    <div class="band">${band.name}</div>
+    <p>${band.summary}</p>
+  </div>
+
+  <h2>By phase</h2>
+  ${phaseRows}
+
+  ${
+      focus.length
+          ? `
+  <div class="focus">
+    <h3 style="margin-top:0;">Focus areas</h3>
+    ${focus.map((f) => `<div class="focus-item"><strong>${f.phase}</strong> · ${f.rating}<br>${f.text}</div>`).join("")}
+  </div>`
+          : ""
+  }
+
+  <h2 style="margin-top:32px;">Suggested next steps</h2>
+  <ul>
+    ${steps.map((s) => `<li>${s}</li>`).join("")}
+  </ul>
+
+  <div class="footer">
+    <p><strong>Eric de Morgoli</strong> — E2M Consulting Services<br>
+    eric@demorgoli.com &nbsp;·&nbsp; +33 6 09 72 08 18 &nbsp;·&nbsp; www.demorgoli.com</p>
+    <p style="margin-top:12px;">A 20-minute complimentary call is available on request to discuss the result in your context. The questionnaire was completed in your browser; no record of the answers exists outside this document.</p>
+  </div>
+</body>
+</html>`;
+            }
+
+            function downloadResult() {
+                const html = buildResultHTML();
+                const blob = new Blob([html], {
+                    type: "text/html;charset=utf-8",
+                });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                const dateStr = new Date().toISOString().split("T")[0];
+                a.href = url;
+                a.download = `eu-ai-act-readiness-${dateStr}.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            /* ────────── EMAIL HANDLING ────────────────────────────────────────── */
+            function handleEmailSubmit(e) {
+                e.preventDefault();
+                const email = $("#email-input").value.trim();
+                const status = $("#email-status");
+                const btn = $("#btn-email");
+
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    status.className = "email-status error";
+                    status.textContent = "Please enter a valid email address.";
+                    return;
+                }
+
+                // If endpoint not yet configured, fall back to a download + a clear message.
+                if (EMAIL_FORM_ENDPOINT.includes("mnjwpgdl")) {
+                    status.className = "email-status info";
+                    status.innerHTML =
+                        "The email delivery service hasn't been configured yet on this site. " +
+                        "Please use the download option above instead — or contact <a href='mailto:eric@demorgoli.com'>eric@demorgoli.com</a> directly.";
+                    return;
+                }
+
+                btn.disabled = true;
+                btn.classList.add("btn-disabled");
+                btn.textContent = "Sending…";
+                status.className = "email-status info";
+                status.textContent = "Sending your result…";
+
+                // Build a payload. We send only the email + the rendered HTML result,
+                // not the raw answer data.
+                const formData = new FormData();
+                formData.append("email", email);
+                formData.append(
+                    "subject",
+                    "Your EU AI Act readiness self-assessment result",
+                );
+                formData.append("result_html", buildResultHTML());
+                formData.append(
+                    "overall_score",
+                    Math.round((totalScore() / MAX_SCORE) * 100) + "%",
+                );
+
+                fetch(EMAIL_FORM_ENDPOINT, {
+                    method: "POST",
+                    body: formData,
+                    headers: { Accept: "application/json" },
+                })
+                    .then((r) => {
+                        if (r.ok) {
+                            status.className = "email-status success";
+                            status.textContent =
+                                "Done. A copy is on its way to your inbox. Eric has been notified of the email address used — nothing else.";
+                            btn.textContent = "Sent ✓";
+                        } else {
+                            throw new Error("Send failed");
+                        }
+                    })
+                    .catch(() => {
+                        status.className = "email-status error";
+                        status.innerHTML =
+                            "Couldn't send right now. Please use the download option above, or contact <a href='mailto:eric@demorgoli.com'>eric@demorgoli.com</a>.";
+                        btn.disabled = false;
+                        btn.classList.remove("btn-disabled");
+                        btn.textContent = "Send to my email";
+                    });
+            }
+
+            /* ────────── NAVIGATION ────────────────────────────────────────────── */
+            function next() {
+                const phase = PHASES[state.phaseIdx];
+                const unanswered = phase.questions.filter(
+                    (q) => !state.answers[q.id],
+                );
+                if (unanswered.length > 0) {
+                    if (
+                        !confirm(
+                            `${unanswered.length} question${unanswered.length > 1 ? "s" : ""} on this page ${unanswered.length > 1 ? "haven't" : "hasn't"} been answered. Unanswered questions are scored as 0. Continue anyway?`,
+                        )
+                    ) {
+                        return;
+                    }
+                }
+
+                if (state.phaseIdx < PHASES.length - 1) {
+                    state.phaseIdx++;
+                    renderPhase();
+                } else {
+                    renderResults();
+                    show("screen-results");
+                }
+            }
+
+            function back() {
+                if (state.phaseIdx > 0) {
+                    state.phaseIdx--;
+                    renderPhase();
+                }
+            }
+
+            function start() {
+                state.phaseIdx = 0;
+                state.answers = {};
+                renderPhase();
+                show("screen-questions");
+            }
+
+            function restart() {
+                if (
+                    !confirm(
+                        "Start a new assessment? Your current answers will be cleared.",
+                    )
+                )
+                    return;
+                state.phaseIdx = 0;
+                state.answers = {};
+                $("#email-input").value = "";
+                $("#email-status").className = "email-status";
+                $("#email-status").textContent = "";
+                $("#btn-email").disabled = false;
+                $("#btn-email").classList.remove("btn-disabled");
+                $("#btn-email").textContent = "Send to my email";
+                show("screen-intro");
+            }
+
+            /* ────────── INIT ──────────────────────────────────────────────────── */
+            document.addEventListener("DOMContentLoaded", () => {
+                $("#btn-start").addEventListener("click", start);
+                $("#btn-next").addEventListener("click", next);
+                $("#btn-back").addEventListener("click", back);
+                $("#btn-restart").addEventListener("click", restart);
+                $("#btn-download").addEventListener("click", downloadResult);
+                $("#email-form").addEventListener("submit", handleEmailSubmit);
+                $("#btn-book").setAttribute("href", BOOKING_LINK);
+            });
+        </script>
+    </body>
+</html>
